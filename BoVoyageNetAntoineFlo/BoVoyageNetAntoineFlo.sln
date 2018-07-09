@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoVoyageNetAntoineFlo", "BoVoyageNetAntoineFlo\BoVoyageNetAntoineFlo.csproj", "{ECAE05A1-B23D-455A-A7C4-035F1E0D6D40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoVoyageNetAntoineFlo.Tests", "BoVoyageNetAntoineFlo.Tests\BoVoyageNetAntoineFlo.Tests.csproj", "{37935FAF-1DD3-48FE-94EC-8B2CF9FD5F8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECAE05A1-B23D-455A-A7C4-035F1E0D6D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECAE05A1-B23D-455A-A7C4-035F1E0D6D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECAE05A1-B23D-455A-A7C4-035F1E0D6D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECAE05A1-B23D-455A-A7C4-035F1E0D6D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37935FAF-1DD3-48FE-94EC-8B2CF9FD5F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37935FAF-1DD3-48FE-94EC-8B2CF9FD5F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37935FAF-1DD3-48FE-94EC-8B2CF9FD5F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37935FAF-1DD3-48FE-94EC-8B2CF9FD5F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF06779E-4CB5-4EB0-85FF-B9489DDC8C49}
+	EndGlobalSection
+EndGlobal
