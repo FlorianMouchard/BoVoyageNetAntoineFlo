@@ -13,6 +13,6 @@ namespace BoVoyageNetAntoineFlo.Models
 
         public decimal PrixTotal { get; set; }
 
-
+        public EtatDossierReservation EtatDossier { get; set; }
     }
 }
