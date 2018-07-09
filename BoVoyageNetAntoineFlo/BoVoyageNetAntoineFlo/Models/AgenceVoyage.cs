@@ -10,5 +10,7 @@ namespace BoVoyageNetAntoineFlo.Models
         public int ID { get; set; }
 
         public string Nom { get; set; }
+
+        public List<Voyage> Voyages { get; set; }
     }
 }

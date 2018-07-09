@@ -7,7 +7,7 @@ namespace BoVoyageNetAntoineFlo.Models
 {
     public class Destination
     {
-        public int IDDestination { get; set; }
+        public int ID { get; set; }
 
         public string Continent { get; set; }
 

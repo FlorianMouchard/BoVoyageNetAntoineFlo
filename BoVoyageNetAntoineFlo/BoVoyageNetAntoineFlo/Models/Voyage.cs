@@ -7,7 +7,7 @@ namespace BoVoyageNetAntoineFlo.Models
 {
     public class Voyage
     {
-        public int IDVoyage { get; set; }
+        public int ID { get; set; }
 
         public DateTime DateAller { get; set; }
 
@@ -16,5 +16,9 @@ namespace BoVoyageNetAntoineFlo.Models
         public int PlacesDisponibles { get; set; }
 
         public decimal TarifToutCompris { get; set; }
+
+        public int DestinationID { get; set; }
+        [ForeignKey("DestinationID")]
+        public Destination Destination { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace BoVoyageNetAntoineFlo.Models
             {
                 return DateTime.Now.Year - DateNaissance.Year -
                          (DateTime.Now.Month < DateNaissance.Month ? 1 :
-                         DateTime.Now.Day < DateNaissance.Day ? 1 : 0);
+                         (DateTime.Now.Month == Naissance.Month && DateTime.Now.Day < Naissance.Day) ? 1 : 0);
             }
         }
     }
