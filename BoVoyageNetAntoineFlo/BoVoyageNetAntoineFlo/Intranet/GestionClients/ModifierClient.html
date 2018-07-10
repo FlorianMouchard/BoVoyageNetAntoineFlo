@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,8 +6,78 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Modifier un client</h2>
+                <form class="form-horizontal" role="form">
 
-    <h2 class="text-center">Modifier un client</h2>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ID</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputID"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Civilité</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputCivilite"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputNom">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Prénom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPrenom">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Adresse</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputAdresse">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Téléphone</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control" id="inputTelephone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Date de naissance</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="inputDateNaissance">
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">Enregistrer</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <p><a href="MenuClients.html">Retour à la gestion des clients</a></p>
     <p><a href="../Accueil.html">Retour à l'accueil</a></p>
@@ -16,6 +86,31 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
+            $("form").submit(function (ev) {
+                let obj = {
+                    Civilite: $("#inputCivilite").val(),
+                    Nom: $("#inputNom").val(),
+                    Prenom: $("#inputPrenom").val(),
+                    Adresse: $("#inputAdresse").val(),
+                    Telephone: $("#inputTelephone").val(),
+                    Email: $("#inputEmail").val(),
+                    DateNaissance: $("#inputDateNaissance").val(),
+                };
+
+                $.ajax({
+                    url: 'http://localhost:52377/api/clients',
+                    method: 'PUT',
+                    data: obj,
+                    success: function (data) {
+                        alert(`Client avec l'ID ${data.ID} modifié`);
+                    }
+                });
+                ev.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>

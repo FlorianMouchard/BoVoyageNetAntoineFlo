@@ -8,7 +8,8 @@ namespace BoVoyageNetAntoineFlo.Models
 {
     public class Client:Personne
     {
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "L'email est obligatoire")]
+        // Format email
         public string Email { get; set; }
     }
 }
