@@ -1,13 +1,27 @@
-﻿<!DOCTYPE html>
+﻿
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Rechercher un client</title>
+    <title>Rechercher des clients</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Rechercher des clients</h2>
+                <form class="form-horizontal" role="form">                 
 
-    <h2 class="text-center">Rechercher un client</h2>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">Rechercher</button>
+                                </div>
+                            </div>
+                     
+                </form>
+            </div>
+        </div>
+    </div>
 
     <p><a href="MenuClients.html">Retour à la gestion des clients</a></p>
     <p><a href="../Accueil.html">Retour à l'accueil</a></p>
@@ -16,6 +30,25 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
+            $("form").submit(function (ev) {
+                let obj = {
+                    
+                };
+
+                $.ajax({
+                    url: 'http://localhost:52377/api/clients',
+                    method: 'GET',
+                    data: obj,
+                    success: function (data) {
+                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                    }
+                });
+                ev.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>

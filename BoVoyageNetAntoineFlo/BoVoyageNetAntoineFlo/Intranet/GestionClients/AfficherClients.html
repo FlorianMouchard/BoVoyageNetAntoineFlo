@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,8 +6,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
-
-    <h2 class="text-center">Afficher les clients</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Afficher les clients</h2>
+                <form class="form-horizontal" role="form">
+                      
+                </form>
+            </div>
+        </div>
+    </div>
 
     <p><a href="MenuClients.html">Retour à la gestion des clients</a></p>
     <p><a href="../Accueil.html">Retour à l'accueil</a></p>
@@ -16,6 +24,20 @@
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
+                $.ajax({
+                    url: 'http://localhost:52377/api/clients',
+                    method: 'GET',
+                    data: obj,
+                    success: function (data) {
+                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                    }
+                });
+                ev.preventDefault();
+            });
+        
+    </script>
 </body>
 </html>

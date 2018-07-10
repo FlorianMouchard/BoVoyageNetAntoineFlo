@@ -10,22 +10,26 @@ namespace BoVoyageNetAntoineFlo.Models
     {
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        
+        [Required(ErrorMessage = "La civilité est obligatoire")]
+        // Menu déroulant (M / Madame)
         public string Civilite { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "Le nom est obligatoire")]
         public string Nom { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "Le prénom est obligatoire")]
         public string Prenom { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "L'adresse est obligatoire")]
         public string Adresse { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "Le téléphone est obligatoire")]
+        // Mettre regex
         public string Telephone { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "La date de naissance est obligatoire")]
+        // Format date
         public DateTime DateNaissance { get; set; }
 
         public int Age {
@@ -38,4 +42,5 @@ namespace BoVoyageNetAntoineFlo.Models
             }
         }
     }
+    
 }
