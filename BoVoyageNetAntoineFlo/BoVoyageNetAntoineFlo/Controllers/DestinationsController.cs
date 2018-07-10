@@ -84,23 +84,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = destination.ID }, destination);
-        }
-
-        // DELETE: api/Destinations/5
-        [ResponseType(typeof(Destination))]
-        public IHttpActionResult DeleteDestination(int id)
-        {
-            Destination destination = db.Destinations.Find(id);
-            if (destination == null)
-            {
-                return NotFound();
-            }
-
-            db.Destinations.Remove(destination);
-            db.SaveChanges();
-
-            return Ok(destination);
-        }
+        }        
 
         protected override void Dispose(bool disposing)
         {

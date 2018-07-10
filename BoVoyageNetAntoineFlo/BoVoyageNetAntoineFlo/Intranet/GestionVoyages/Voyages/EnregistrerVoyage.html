@@ -60,6 +60,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
+
+            $.get("http://localhost:52377/api/destinations", function (data) {                
+
+                for (let item of data) {
+
+                    $("#inputDestinationID").append(`<option value="${item.ID}">${item.Region}</option>`)
+                }
+
+            });
+
             $("form").submit(function (ev) {
                 let obj = {
                     DateAller: $("#inputDateAller").val(),
@@ -70,7 +80,7 @@
 
                 };
                 $.ajax({
-                    url: 'http://localhost:52377/Intranet/GestionVoyages/EnregistrerVoyage',
+                    url: 'http://localhost:52377/api/voyages',
                     method: 'Post',
                     data: obj,
                     success: function (data) {

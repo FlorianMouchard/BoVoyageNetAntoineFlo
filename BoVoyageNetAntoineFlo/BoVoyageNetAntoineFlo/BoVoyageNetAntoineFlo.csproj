@@ -104,7 +104,9 @@
     <Content Include="Intranet\GestionClients\ModifierClient.html" />
     <Content Include="Intranet\GestionClients\RechercherClient.html" />
     <Content Include="Intranet\GestionClients\SupprimerClient.html" />
+    <Content Include="Intranet\GestionVoyages\Destinations\AfficherDestination.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\EnregistrerDestination.html" />
+    <Content Include="Intranet\GestionVoyages\Destinations\ModifierDestination.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\AfficherVoyages.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\EnregistrerVoyage.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\MenuVoyages.html" />
