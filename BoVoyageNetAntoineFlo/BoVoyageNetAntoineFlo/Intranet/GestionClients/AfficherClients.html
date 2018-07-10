@@ -10,12 +10,13 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Afficher les clients</h2>
-                <form class="form-horizontal" role="form">
-                      
-                </form>
+                <form class="form-horizontal" role="form"></form>
+            </div>
+            <div class="col-md-6">
+                <ul id="resultat"></ul>
             </div>
         </div>
-    </div>
+        </div>
 
     <p><a href="MenuClients.html">Retour à la gestion des clients</a></p>
     <p><a href="../Accueil.html">Retour à l'accueil</a></p>
@@ -26,13 +27,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-
+           
                 $.ajax({
-                    url: 'http://localhost:52377/api/clients',
+                    url: "http://localhost:52377/api/clients",
                     method: 'GET',
-                    data: obj,
                     success: function (data) {
-                        alert(`Client enregistré avec l'ID ${data.ID}`);
+                        let ul = $('#resultat');
+                        for (let item of data) {
+                            ul.append(`<li>${Client}</li>`);
+                        }
+                    },
+                    error: function (message) {
+                        alert(message);
                     }
                 });
                 ev.preventDefault();

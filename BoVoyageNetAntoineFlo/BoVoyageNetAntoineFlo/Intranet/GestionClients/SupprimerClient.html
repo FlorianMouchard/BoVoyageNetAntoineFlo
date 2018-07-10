@@ -42,20 +42,21 @@
 
             $.get("http://localhost:52377/api/clients", function (data) {
                 for (let item of data) {
-                    $("#inputID").append(`<option value="${item.ID}"></option>`)
+                    $("#inputID").append(`<option value="${item.ID}">${item.ID}</option>`)
                 }
+            });
 
             $("form").submit(function (ev) {
                 let obj = {
-                    ID: $("#inputID").val()
+                    ID: $("#inputID").val(),
                 };
 
                 $.ajax({
-                    url: 'http://localhost:52377/api/clients/id',
+                    url: 'http://localhost:52377/api/clients/' + $("#inputID").val(),
                     method: 'DELETE',
                     data: obj,
                     success: function (data) {
-                        alert(`Client ${data.ID} supprimé`);
+                        alert(`Client avec l'ID ${data.ID} supprimé`);
                     }
                 });
                 ev.preventDefault();
