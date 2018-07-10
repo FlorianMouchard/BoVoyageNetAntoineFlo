@@ -71,7 +71,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Enregistrer</button>
+                                    <button type="submit" class="btn btn-default">Modifier</button>
                                 </div>
                             </div>
 
@@ -100,6 +100,7 @@
 
             $("form").submit(function (ev) {
                 let obj = {
+                    ID: $("#inputID").val(),
                     Civilite: $("#inputCivilite").val(),
                     Nom: $("#inputNom").val(),
                     Prenom: $("#inputPrenom").val(),
@@ -110,7 +111,7 @@
                 };
 
                 $.ajax({
-                    url: 'http://localhost:52377/api/clients',
+                    url: 'http://localhost:52377/api/clients/' + $("#inputID").val(),
                     method: 'PUT',
                     data: obj,
                     success: function (data) {
