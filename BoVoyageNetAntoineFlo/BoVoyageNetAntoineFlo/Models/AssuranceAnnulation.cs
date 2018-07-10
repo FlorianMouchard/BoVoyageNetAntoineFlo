@@ -7,5 +7,8 @@ namespace BoVoyageNetAntoineFlo.Models
 {
     public class AssuranceAnnulation
     {
+        public int ID { get; set; }
+
+        public string Nom { get; set; }
     }
 }
