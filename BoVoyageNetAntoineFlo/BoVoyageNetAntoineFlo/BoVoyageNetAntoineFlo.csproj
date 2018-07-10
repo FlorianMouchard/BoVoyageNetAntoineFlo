@@ -96,7 +96,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Intranet\Accueil.html" />
     <Content Include="Global.asax" />
+    <Content Include="Intranet\GestionClients\AfficherClients.html" />
+    <Content Include="Intranet\GestionClients\CreerClient.html" />
+    <Content Include="Intranet\GestionClients\MenuClients.html" />
+    <Content Include="Intranet\GestionClients\ModifierClient.html" />
+    <Content Include="Intranet\GestionClients\RechercherClient.html" />
+    <Content Include="Intranet\GestionVoyages\MenuVoyages.html" />
+    <Content Include="Intranet\SupprimerClient.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +138,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="html\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
