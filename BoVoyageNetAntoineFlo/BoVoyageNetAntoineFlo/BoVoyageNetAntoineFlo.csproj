@@ -104,12 +104,13 @@
     <Content Include="Intranet\GestionClients\ModifierClient.html" />
     <Content Include="Intranet\GestionClients\RechercherClient.html" />
     <Content Include="Intranet\GestionClients\SupprimerClient.html" />
-    <Content Include="Intranet\GestionVoyages\AfficherVoyages.html" />
-    <Content Include="Intranet\GestionVoyages\CreerVoyage.html" />
-    <Content Include="Intranet\GestionVoyages\MenuVoyages.html" />
-    <Content Include="Intranet\GestionVoyages\ModifierVoyage.html" />
-    <Content Include="Intranet\GestionVoyages\RechercherVoyage.html" />
-    <Content Include="Intranet\GestionVoyages\SupprimerVoyage.html" />
+    <Content Include="Intranet\GestionVoyages\Destinations\EnregistrerDestination.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\AfficherVoyages.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\EnregistrerVoyage.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\MenuVoyages.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\ModifierVoyage.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\RechercherVoyage.html" />
+    <Content Include="Intranet\GestionVoyages\Voyages\SupprimerVoyage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
