@@ -23,6 +23,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des clients
         /// </summary>
+        /// <response code="200">Liste des clients retournée</response>
         /// <returns></returns>
         public IQueryable<Client> GetClients()
         {
@@ -39,8 +40,9 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="telephone"></param>
         /// <param name="adresse"></param>
         /// <param name="clientID"></param>
+        /// <response code="200">Clients affichés selon les critères spécifiés</response>
         /// <returns></returns>
-        
+
         [Route("search")]
         public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
         {
@@ -67,6 +69,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des clients selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Client sélectionné</response>
+        /// <response code="404">Client introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [Route("{id:int}")]
         [ResponseType(typeof(Client))]
@@ -87,6 +91,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="client"></param>
+        /// <response code="200">Client modifié</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou client introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
@@ -128,6 +134,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute un nouveau client
         /// </summary>
         /// <param name="client"></param>
+        /// <response code="200">Client créé</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(Client))]
         public IHttpActionResult PostClient(Client client)
@@ -148,6 +156,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime un client (sélectionné par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Client supprimé</response>
+        /// <response code="404">Client introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [Route("{id:int}")]
         [ResponseType(typeof(Client))]

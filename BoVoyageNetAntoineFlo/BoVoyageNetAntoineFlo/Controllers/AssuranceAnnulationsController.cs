@@ -13,6 +13,7 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
+    [RoutePrefix("api/AssuranceAnnulations")]
     public class AssuranceAnnulationsController : ApiController
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
@@ -21,6 +22,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des assurances Annulation
         /// </summary>
+        /// <response code="200">Liste des assurances Annulation retournée</response>
         /// <returns></returns>
         public IQueryable<AssuranceAnnulation> GetAssurancesAnnulations()
         {
@@ -32,7 +34,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des assurances Annulation selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Assurance Annulation sélectionnée</response>
+        /// <response code="404">Assurance Annulation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult GetAssuranceAnnulation(int id)
         {
@@ -51,7 +56,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="assuranceAnnulation"></param>
+        /// <response code="200">Assurance Annulation modifiée</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou assurance Annulation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAssuranceAnnulation(int id, AssuranceAnnulation assuranceAnnulation)
         {
@@ -91,6 +99,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute une nouvelle assurance Annulation
         /// </summary>
         /// <param name="assuranceAnnulation"></param>
+        /// <response code="200">Assurance annulation créée</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult PostAssuranceAnnulation(AssuranceAnnulation assuranceAnnulation)
@@ -111,7 +121,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime une assurance Annulation (sélectionnée par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Assurance Annulation supprimée</response>
+        /// <response code="404">Assurance Annulation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult DeleteAssuranceAnnulation(int id)
         {
