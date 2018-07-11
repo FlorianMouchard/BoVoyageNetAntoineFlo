@@ -109,6 +109,7 @@
     <Content Include="Intranet\GestionVoyages\AgenceVoyages\ModifierAgence.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\AfficherDestination.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\EnregistrerDestination.html" />
+    <Content Include="Intranet\GestionVoyages\Destinations\MenuDestination.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\ModifierDestination.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\AfficherVoyages.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\EnregistrerVoyage.html" />
