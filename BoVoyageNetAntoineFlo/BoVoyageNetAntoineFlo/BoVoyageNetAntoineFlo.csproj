@@ -106,6 +106,7 @@
     <Content Include="Intranet\GestionClients\RechercherClient.html" />
     <Content Include="Intranet\GestionClients\SupprimerClient.html" />
     <Content Include="Intranet\GestionVoyages\AgenceVoyages\AjouterAgence.html" />
+    <Content Include="Intranet\GestionVoyages\AgenceVoyages\MenuAgences.html" />
     <Content Include="Intranet\GestionVoyages\AgenceVoyages\ModifierAgence.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\AfficherDestination.html" />
     <Content Include="Intranet\GestionVoyages\Destinations\EnregistrerDestination.html" />
