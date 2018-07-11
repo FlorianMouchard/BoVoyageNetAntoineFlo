@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modifier une agence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">IdAgence</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="selectID"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get("http://localhost:52377/api/AgenceVoyages", function (data) {
+                for (let item of data) {
+
+                    $("#selectID").append(`<option value="${item.ID}">${item.ID}</option>`)
+
+                }
+
+            });
+
+            $("form").submit(function (ev) {
+                let obj = {
+                    ID: $("#inputID").val(),
+                    Nom: $("#inputName").val()
+                };
+
+                $.ajax({
+                    url: 'http://localhost:52377/api/AgenceVoyages/' + $("#inputID").val(),
+                    method: 'PUT',
+                    data: obj,
+                    success: function (data) {
+                        alert(`Agence de voyage modifiée`);
+                    }
+                });
+                ev.preventDefault();
+            });
+
+        });
+    </script>
+</body>
+</html>
