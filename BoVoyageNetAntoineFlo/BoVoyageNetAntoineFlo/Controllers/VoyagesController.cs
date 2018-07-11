@@ -13,7 +13,7 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
-    [RoutePrefix("api/voyages")]
+    [RoutePrefix("api/Voyages")]
     public class VoyagesController : ApiController
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
@@ -22,6 +22,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des voyages
         /// </summary>
+        /// <response code="200">Liste des voyages retournée</response>
         /// <returns></returns>
         public IQueryable<Voyage> GetVoyages()
         {
@@ -35,6 +36,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="dateAller"></param>
         /// <param name="dateRetour"></param>
         /// <param name="destinationID"></param>
+        /// <response code="200">Voyages affichés selon les critères spécifiés</response>
         /// <returns></returns>
         [Route("search")]
         public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
@@ -55,6 +57,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des voyages selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Voyage sélectionné</response>
+        /// <response code="404">Voyage introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [Route("{id:int}")]
         [ResponseType(typeof(Voyage))]
@@ -76,6 +80,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="voyage"></param>
+        /// <response code="200">Voyage modifié</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou voyage introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(void))]
         [Route("{id:int}")]
@@ -117,6 +123,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute un nouveau voyage
         /// </summary>
         /// <param name="voyage"></param>
+        /// <response code="200">Voyage créé</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult PostVoyage(Voyage voyage)
@@ -137,6 +145,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime un voyage (sélectionné par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Voyage supprimé</response>
+        /// <response code="404">Voyage introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(Voyage))]
         [Route("{id:int}")]

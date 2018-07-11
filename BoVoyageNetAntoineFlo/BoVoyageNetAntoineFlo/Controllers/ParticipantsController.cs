@@ -13,6 +13,7 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
+    [RoutePrefix("api/Participants")]
     public class ParticipantsController : ApiController
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
@@ -21,6 +22,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des participants
         /// </summary>
+        /// <response code="200">Liste des participants retournée</response>
         /// <returns></returns>
         public IQueryable<Participant> GetParticipants()
         {
@@ -37,8 +39,9 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="telephone"></param>
         /// <param name="adresse"></param>
         /// <param name="participantID"></param>
+        /// <response code="200">Participants affichés selon les critères spécifiés</response>
         /// <returns></returns>
-        [Route("api/Participants/search")]
+        [Route("search")]
         public IQueryable<Participant> GetSearch(float? reduction = null, string nom = "", string prenom = "", string telephone = "", string adresse = "", int? participantID = null)
         {
             var query = db.Participants.Where(x => x.ID > 0);
@@ -64,7 +67,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des participants selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Participant sélectionné</response>
+        /// <response code="404">Participant introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(Participant))]
         public IHttpActionResult GetParticipant(int id)
         {
@@ -83,7 +89,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="participant"></param>
+        /// <response code="200">Participant modifié</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou participant introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutParticipant(int id, Participant participant)
         {
@@ -123,6 +132,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute un nouveau participant
         /// </summary>
         /// <param name="participant"></param>
+        /// <response code="200">Participant créé</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(Participant))]
         public IHttpActionResult PostParticipant(Participant participant)
@@ -143,7 +154,10 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime un participant (sélectionné par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Participant supprimé</response>
+        /// <response code="404">Participant introuvable pour l'ID spécifié</response>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(Participant))]
         public IHttpActionResult DeleteParticipant(int id)
         {
