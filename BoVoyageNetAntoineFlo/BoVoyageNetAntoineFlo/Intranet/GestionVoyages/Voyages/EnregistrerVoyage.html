@@ -9,6 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h2 class="text-center">Enregistrer un nouveau voyage</h2>
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Date d'aller</label>
@@ -54,6 +55,10 @@
             </div>
         </div>
     </div>
+
+    <p><a href="MenuVoyages.html">Retour à la gestion des voyages</a></p>
+    <p><a href="../../Accueil.html">Retour à l'accueil</a></p>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
@@ -61,7 +66,7 @@
     <script>
         $(document).ready(function () {
 
-            $.get("http://localhost:52377/api/destinations", function (data) {                
+            $.get("http://localhost:52377/api/destinations", function (data) {
 
                 for (let item of data) {
 

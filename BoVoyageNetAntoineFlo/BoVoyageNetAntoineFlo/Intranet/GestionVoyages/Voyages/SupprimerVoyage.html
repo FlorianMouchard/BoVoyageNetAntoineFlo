@@ -1,11 +1,67 @@
-﻿<!DOCTYPE html>
+﻿<<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Supprimer un Voyage</title>
+    <title>Supprimer un voyage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Supprimer un voyage</h2>
+                <form class="form-horizontal" role="form">
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ID</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputID"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Supprimer</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <p><a href="MenuVoyages.html">Retour à la gestion des voyages</a></p>
+    <p><a href="../../Accueil.html">Retour à l'accueil</a></p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $.get("http://localhost:52377/api/voyages", function (data) {
+                for (let item of data) {
+                    $("#inputID").append(`<option value="${item.ID}">${item.ID}</option>`)
+                }
+            });
+
+            $("form").submit(function (ev) {
+                let obj = {
+                    ID: $("#inputID").val(),
+                };
+
+                $.ajax({
+                    url: 'http://localhost:52377/api/voyages/' + $("#inputID").val(),
+                    method: 'DELETE',
+                    data: obj,
+                    success: function (data) {
+                        alert(`Voyage avec l'ID ${data.ID} supprimé`);
+                    }
+                });
+                ev.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>
