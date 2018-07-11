@@ -13,17 +13,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Region</th>
                             <th>Date d'aller</th>
                             <th>Date de retour</th>
                             <th>Places disponibles</th>
-                            <th>TarifToutCompris</th>
-                            <th>Id Destination</th>
+                            <th>TarifToutCompris</th>                            
                         </tr>
                     </thead>
-                    <tbody id="tableVoyage">
+                    <tbody id="tableVoyage"></tbody>
 
-                    </tbody>
-                    
                 </table>
             </div>
         </div>
@@ -34,21 +32,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("form").submit(function (ev) {
-                $.ajax({
-                    url: 'http://localhost:52377/api/voyages',
-                    method: 'GET',
-                    success: function (data) {                        
-                        for (let item of data) {
-                            $("#tableVoyage").append(`<tr><td>${item.ID}</td><td>${item.DateAller}</td><td>${item.DateRetour}</td><td>${item.PlacesDisponibles}</td><td>${item.TarifToutCompris}</td><td>${item.DestinationID}</td></tr>`);
 
-                        }
-                    },
-                });
-                ev.preventDefault();
-            })
+            $.ajax({
+                url: 'http://localhost:52377/api/voyages',
+                method: 'GET',
+                success: function (data) {
+                    for (let item of data) {
+                        $("#tableVoyage").append(`<tr><td>${item.ID}</td><td>${item.Destination.Region}</td><td>${item.DateAller}</td><td>${item.DateRetour}</td><td>${item.PlacesDisponibles}</td><td>${item.TarifToutCompris}</td></tr>`);
 
-
+                    }
+                },
+            });
+            ev.preventDefault();
+            
         });
     </script>
 
