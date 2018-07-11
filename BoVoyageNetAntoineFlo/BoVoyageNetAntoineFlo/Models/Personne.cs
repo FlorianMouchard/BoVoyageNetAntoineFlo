@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -25,13 +26,13 @@ namespace BoVoyageNetAntoineFlo.Models
         public string Adresse { get; set; }
 
         [Required(ErrorMessage = "Le téléphone est obligatoire")]
-        // Mettre regex
+        [RegularExpression("/^0[0-9]{9}$/", ErrorMessage = "Entrer un numéro au format 0xxxxxxxxx")]        
         public string Telephone { get; set; }
 
-        [Required(ErrorMessage = "La date de naissance est obligatoire")]
-        // Format date
+        [Required(ErrorMessage = "La date de naissance est obligatoire")]        
         public DateTime DateNaissance { get; set; }
 
+        [NotMapped]
         public int Age {
 
             get
