@@ -9,17 +9,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="inputVoyage">Voyage</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputVoyage" placeholder="Rechercher">
-                        </div>
-                    </div>                    
-                </form>
-            </div>
-            <div class="col-md-6">
-                <ul id="resultat"></ul>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Region</th>
+                            <th>Date d'aller</th>
+                            <th>Date de retour</th>
+                            <th>Places disponibles</th>
+                            <th>TarifToutCompris</th>                            
+                        </tr>
+                    </thead>
+                    <tbody id="tableVoyage"></tbody>
+
+                </table>
             </div>
         </div>
     </div>
@@ -30,27 +33,18 @@
     <script>
         $(document).ready(function () {
 
-            $("form").submit(function (ev) {
-
-                $.ajax({
-                    url: 'http://localhost:52377/api/voyages',
-                    method: 'GET',
-                    success: function (data) {
-                        let ul = $('#resultat');
-                        for (let item of data) {
-                            ul.append(`<li>${item}</li>`);
-                        }
-                    },
-
-                    error: function (message) {
-
-                        alert(message);
+            $.ajax({
+                url: 'http://localhost:52377/api/voyages',
+                method: 'GET',
+                success: function (data) {
+                    for (let item of data) {
+                        $("#tableVoyage").append(`<tr><td>${item.ID}</td><td>${item.Destination.Region}</td><td>${item.DateAller}</td><td>${item.DateRetour}</td><td>${item.PlacesDisponibles}</td><td>${item.TarifToutCompris}</td></tr>`);
 
                     }
-                });
-                ev.preventDefault();
-
+                },
             });
+            ev.preventDefault();
+            
         });
     </script>
 

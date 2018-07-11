@@ -13,6 +13,7 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
+    [RoutePrefix("api/voyages")]
     public class VoyagesController : ApiController
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
@@ -24,7 +25,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <returns></returns>
         public IQueryable<Voyage> GetVoyages()
         {
-            return db.Voyages;
+            return db.Voyages.Include(x => x.Destination);
         }
 
         //GET: api/Voyages/search
@@ -35,7 +36,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="dateRetour"></param>
         /// <param name="destinationID"></param>
         /// <returns></returns>
-        [Route("api/Voyages/search")]
+        [Route("search")]
         public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
         {
             var query = db.Voyages.Where(x => x.PlacesDisponibles > 0);
@@ -55,6 +56,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Route("{id:int}")]
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
         {
@@ -76,6 +78,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="voyage"></param>
         /// <returns></returns>
         [ResponseType(typeof(void))]
+        [Route("{id:int}")]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
         {
             if (!ModelState.IsValid)
@@ -136,6 +139,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(Voyage))]
+        [Route("{id:int}")]
         public IHttpActionResult DeleteVoyage(int id)
         {
             Voyage voyage = db.Voyages.Find(id);
