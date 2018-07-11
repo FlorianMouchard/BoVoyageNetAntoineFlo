@@ -40,7 +40,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="adresse"></param>
         /// <param name="clientID"></param>
         /// <returns></returns>
-        [Route("api/Clients/search")]
+        
         [Route("search")]
         public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
         {
