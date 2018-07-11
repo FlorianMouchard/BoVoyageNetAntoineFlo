@@ -9,6 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h2>Ajouter une agence</h2>
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group">
@@ -27,6 +28,10 @@
             </div>
         </div>
     </div>
+
+    <p><a href="MenuAgences.html">Retour à la gestion des agences</a></p>
+    <p><a href="../../Accueil.html">Retour à l'accueil</a></p>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
@@ -36,7 +41,7 @@
         $(document).ready(function () {
             $("form").submit(function (ev) {
                 let obj = {
-                    Nom: $("#inputName").val(),                 
+                    Nom: $("#inputName").val(),
                 };
 
                 $.ajax({
