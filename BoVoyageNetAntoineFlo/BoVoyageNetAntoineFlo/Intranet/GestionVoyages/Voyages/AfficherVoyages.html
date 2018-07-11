@@ -8,13 +8,24 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-md-6">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date d'aller</th>
+                            <th>Date de retour</th>
+                            <th>Places disponibles</th>
+                            <th>TarifToutCompris</th>
+                            <th>Id Destination</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableVoyage">
 
-            <div class="col-md-6">                
-                    <h2>Afficher les Voyages</h2>
-                    <ul id="voyages"></ul>
-                    <form class="form-horizontal" role="form"></form>                
+                    </tbody>
+                    
+                </table>
             </div>
-                        
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -23,20 +34,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
+            $("form").submit(function (ev) {
+                $.ajax({
+                    url: 'http://localhost:52377/api/voyages',
+                    method: 'GET',
+                    success: function (data) {                        
+                        for (let item of data) {
+                            $("#tableVoyage").append(`<tr><td>${item.ID}</td><td>${item.DateAller}</td><td>${item.DateRetour}</td><td>${item.PlacesDisponibles}</td><td>${item.TarifToutCompris}</td><td>${item.DestinationID}</td></tr>`);
 
-            $.ajax({
-                url: 'http://localhost:52377/api/voyages',
-                method: 'GET',
-                success: function (data) {
-                    let ul = $('#voyages');
-                    for (let item of data) {
-                        $('<li>', { text: formatItem(item) }).appendTo($('#voyages'));
-                    }
-                },                
-            });
-            function formatItem(item) {
-                return item.DateAller + ' ' + item.DateRetour + ' ' + item.PlacesDisponibles + ' ' + item.TarifToutCompris + ' ' + item.DestinationID;
-            }
+                        }
+                    },
+                });
+                ev.preventDefault();
+            })
+
+
         });
     </script>
 

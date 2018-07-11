@@ -13,6 +13,7 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
+    [RoutePrefix("api/voyages")]
     public class VoyagesController : ApiController
     {
         private BoVoyageDbContext db = new BoVoyageDbContext();
@@ -24,7 +25,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         //GET: api/Voyages/search
-        [Route("api/voyages/search")]
+        [Route("search")]
         public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
         {
             var query = db.Voyages.Where(x => x.PlacesDisponibles > 0);
@@ -39,6 +40,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return query;
         }
         // GET: api/Voyages/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
         {
@@ -54,6 +56,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         
         // PUT: api/Voyages/5
         [ResponseType(typeof(void))]
+        [Route("{id:int}")]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
         {
             if (!ModelState.IsValid)
@@ -104,6 +107,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
 
         // DELETE: api/Voyages/5
         [ResponseType(typeof(Voyage))]
+        [Route("{id:int}")]
         public IHttpActionResult DeleteVoyage(int id)
         {
             Voyage voyage = db.Voyages.Find(id);
