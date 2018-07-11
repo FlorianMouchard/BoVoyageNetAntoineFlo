@@ -23,6 +23,21 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return db.Voyages;
         }
 
+        //GET: api/Voyages/search
+        [Route("search")]
+        public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
+        {
+            var query = db.Voyages.Where(x => x.PlacesDisponibles < 0);
+
+            if (destinationID != null)
+                query = query.Where(x => x.DestinationID == destinationID);
+            if (dateAller != null)
+                query = query.Where(x => x.DateAller == dateAller);
+            if (dateRetour != null)
+                query = query.Where(x => x.DateRetour == dateRetour);
+
+            return query;
+        }
         // GET: api/Voyages/5
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
@@ -36,6 +51,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return Ok(voyage);
         }
 
+        
         // PUT: api/Voyages/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
