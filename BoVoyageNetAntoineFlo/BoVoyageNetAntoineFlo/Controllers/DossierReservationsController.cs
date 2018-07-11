@@ -21,6 +21,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des dossiers de réservation
         /// </summary>
+        /// <response code="200">Liste des dossiers de réservation retournée</response>
         /// <returns></returns>
         public IQueryable<DossierReservation> GetDossiersReservations()
         {
@@ -33,6 +34,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="numeroCarte"></param>>
         /// <param name="dossierID"></param>
+        /// <response code="200">Dossiers de réservation affichés selon les critères spécifiés</response>
         /// <returns></returns>
         [Route("api/DossierReservations/search")]
         public IQueryable<DossierReservation> GetSearch(string numeroCarte = "", int? dossierID = null)
@@ -52,6 +54,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des dossiers de réservation selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Dossier de réservation sélectionné</response>
+        /// <response code="404">Dossier de réservation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult GetDossierReservation(int id)
@@ -71,6 +75,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dossierReservation"></param>
+        /// <response code="200">Dossier de réservation modifié</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou dossier de réservation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDossierReservation(int id, DossierReservation dossierReservation)
@@ -111,6 +117,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute un nouveau dossier de réservation
         /// </summary>
         /// <param name="dossierReservation"></param>
+        /// <response code="200">Dossier de réservation créé</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult PostDossierReservation(DossierReservation dossierReservation)
@@ -131,6 +139,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime un dossier de réservation (sélectionné par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Dossier de réservation supprimé</response>
+        /// <response code="404">Dossier de réservation introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult DeleteDossierReservation(int id)

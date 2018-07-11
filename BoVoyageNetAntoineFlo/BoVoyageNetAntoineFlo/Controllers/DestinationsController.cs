@@ -21,6 +21,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des destinations
         /// </summary>
+        /// <response code="200">Liste des destinations retournée</response>
         /// <returns></returns>
         public IQueryable<Destination> GetDestinations()
         {
@@ -35,6 +36,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <param name="pays"></param>
         /// <param name="region"></param>
         /// <param name="destinationID"></param>
+        /// <response code="200">Destinations affichées selon les critères spécifiés</response>
         /// <returns></returns>
         [Route("api/Destinations/search")]
         public IQueryable<Destination> GetSearch(string continent = "", string pays = "", string region = "", int? destinationID = null)
@@ -58,6 +60,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des destinations selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Destination sélectionnée</response>
+        /// <response code="404">Destination introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(Destination))]
         public IHttpActionResult GetDestination(int id)
@@ -77,6 +81,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="destination"></param>
+        /// <response code="200">Destination modifiée</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou destination introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDestination(int id, Destination destination)
@@ -117,6 +123,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute une nouvelle destination
         /// </summary>
         /// <param name="destination"></param>
+        /// <response code="200">Destination créée</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(Destination))]
         public IHttpActionResult PostDestination(Destination destination)

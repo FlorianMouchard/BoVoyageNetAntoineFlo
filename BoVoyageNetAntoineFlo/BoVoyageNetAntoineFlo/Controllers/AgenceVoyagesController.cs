@@ -21,6 +21,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// <summary>
         /// Retourne la liste des agences de voyages
         /// </summary>
+        /// <response code="200">Liste des agences de voyages retournée</response>
         /// <returns></returns>
         public IQueryable<AgenceVoyage> GetAgencesVoyages()
         {
@@ -32,6 +33,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Retourne la liste des agences de voyages selon leur ID
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Agence de voyages sélectionnée</response>
+        /// <response code="404">Agence de voyages introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult GetAgenceVoyage(int id)
@@ -51,6 +54,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="agenceVoyage"></param>
+        /// <response code="200">Agence de voyages modifiée</response>
+        /// <response code="400">Erreur dans la modification des attributs, ou agence de voyages introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAgenceVoyage(int id, AgenceVoyage agenceVoyage)
@@ -91,6 +96,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Ajoute une nouvelle agence de voyages
         /// </summary>
         /// <param name="agenceVoyage"></param>
+        /// <response code="200">Agence de voyages créée</response>
+        /// <response code="400">Erreur dans la saisie des attributs</response>
         /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult PostAgenceVoyage(AgenceVoyage agenceVoyage)
@@ -111,6 +118,8 @@ namespace BoVoyageNetAntoineFlo.Controllers
         /// Supprime une agence de voyages (sélectionnée par son ID)
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="200">Agence de voyages supprimée</response>
+        /// <response code="400">Voyage introuvable pour l'ID spécifié</response>
         /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult DeleteAgenceVoyage(int id)
