@@ -139,6 +139,10 @@
     <Compile Include="Migrations\201807110928485_Regex.Designer.cs">
       <DependentUpon>201807110928485_Regex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807111238215_RegexTelephone.cs" />
+    <Compile Include="Migrations\201807111238215_RegexTelephone.Designer.cs">
+      <DependentUpon>201807111238215_RegexTelephone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AgenceVoyage.cs" />
     <Compile Include="Models\Assurance.cs" />
@@ -171,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807110928485_Regex.resx">
       <DependentUpon>201807110928485_Regex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111238215_RegexTelephone.resx">
+      <DependentUpon>201807111238215_RegexTelephone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

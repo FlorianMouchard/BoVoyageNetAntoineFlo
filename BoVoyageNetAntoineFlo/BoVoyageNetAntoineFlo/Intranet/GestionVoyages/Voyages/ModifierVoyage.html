@@ -9,6 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h2>Modifier un voyage</h2>
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group">
@@ -62,13 +63,17 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Enregistrer</button>
+                            <button type="submit" class="btn btn-default">Modifier</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    
+    <p><a href="MenuVoyages.html">Retour à la gestion des voyages</a></p>
+    <p><a href="../../Accueil.html">Retour à l'accueil</a></p>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
@@ -77,8 +82,8 @@
         $(document).ready(function () {
             $.get("http://localhost:52377/api/destinations", function (data) {
                 for (let item of data) {
-                    
-                    $("#inputDestinationID").append(`<option value="${item.ID}">${item.ID} ${item.Region}</option>`)                   
+
+                    $("#inputDestinationID").append(`<option value="${item.ID}">${item.ID} ${item.Region}</option>`)
 
                 }
 
@@ -87,7 +92,7 @@
                 for (let item of data) {
 
                     $("#selectID").append(`<option value="${item.ID}">${item.ID}</option>`)
-                    
+
                 }
 
             });
@@ -106,7 +111,7 @@
                     method: 'PUT',
                     data: obj,
                     success: function (data) {
-                        alert(`Voyage modifiée`);
+                        alert(`Voyage modifié`);
                     }
                 });
                 ev.preventDefault();
