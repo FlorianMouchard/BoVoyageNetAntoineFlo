@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Supprimer un client</title>
+    <title>Supprimer un participant</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Supprimer un client</h2>
+                <h2>Supprimer un participant</h2>
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group">
@@ -19,12 +19,12 @@
                         </div>
                     </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Supprimer</button>
-                                </div>
-                            </div>
-                      
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Supprimer</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -40,7 +40,7 @@
     <script>
         $(document).ready(function () {
 
-            $.get("http://localhost:52377/api/clients", function (data) {
+            $.get("http://localhost:52377/api/participants", function (data) {
                 for (let item of data) {
                     $("#inputID").append(`<option value="${item.ID}">${item.ID} ${item.Nom} ${item.Prenom}</option>`)
                 }
@@ -52,11 +52,11 @@
                 };
 
                 $.ajax({
-                    url: 'http://localhost:52377/api/clients/' + $("#inputID").val(),
+                    url: 'http://localhost:52377/api/participants/' + $("#inputID").val(),
                     method: 'DELETE',
                     data: obj,
                     success: function (data) {
-                        alert(`Client avec l'ID ${data.ID} supprimé`);
+                        alert(`Participant avec l'ID ${data.ID} supprimé`);
                     }
                 });
                 ev.preventDefault();

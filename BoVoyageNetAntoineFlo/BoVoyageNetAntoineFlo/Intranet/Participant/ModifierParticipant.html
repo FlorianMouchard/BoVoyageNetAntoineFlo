@@ -2,25 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Modifier un client</title>
+    <title>Modifier un participant</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Modifier un client</h2>
+                <h2>Modifier un participant</h2>
                 <form class="form-horizontal" role="form">
 
                     <div class="form-group">
-                        <label class="col-sm-5 control-label">Sélectionnez l'ID du client à modifier</label>
+                        <label class="col-sm-5 control-label">Sélectionnez l'ID du participant à modifier</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="selectID"></select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-7 control-label"> Entrez l'ID souhaité (il est vivement recommandé de garder l'ID précédent) </label>
+                        <label class="col-sm-7 control-label"> Entrez l'ID  (il est obligatoire de garder l'ID précédent) </label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="inputID">
                         </div>
@@ -65,16 +65,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Email</label>
+                        <label class="col-sm-2 control-label">Reduction</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail">
+                            <input type="number" class="form-control" id="inputReduction">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Date de naissance</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="inputDateNaissance">                            
+                            <input type="date" class="form-control" id="inputDateNaissance">
                         </div>
                     </div>
                     <div class="form-group">
@@ -97,7 +97,7 @@
     <script>
         $(document).ready(function () {
 
-            $.get("http://localhost:52377/api/clients", function (data) {
+            $.get("http://localhost:52377/api/participants", function (data) {
                 for (let item of data) {
                     $("#selectID").append(`<option value="${item.ID}">${item.ID}</option>`)
                 }
@@ -111,16 +111,16 @@
                     Prenom: $("#inputPrenom").val(),
                     Adresse: $("#inputAdresse").val(),
                     Telephone: $("#inputTelephone").val(),
-                    Email: $("#inputEmail").val(),
+                    Reduction: $("#inputReduction").val(),
                     DateNaissance: $("#inputDateNaissance").val(),
                 };
 
                 $.ajax({
-                    url: 'http://localhost:52377/api/clients/' + $("#inputID").val(),
+                    url: 'http://localhost:52377/api/participants/' + $("#inputID").val(),
                     method: 'PUT',
                     data: obj,
                     success: function (data) {
-                        alert(`Client modifié`);
+                        alert(`Participant modifié`);
                     }
                 });
                 ev.preventDefault();
