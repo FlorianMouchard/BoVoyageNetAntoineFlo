@@ -18,13 +18,24 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/Voyages
+        /// <summary>
+        /// Retourne la liste des voyages
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Voyage> GetVoyages()
         {
             return db.Voyages;
         }
 
         //GET: api/Voyages/search
-        [Route("api/voyages/search")]
+        /// <summary>
+        /// Retourne la liste des voyages selon un ou plusieurs critères spécifiés
+        /// </summary>
+        /// <param name="dateAller"></param>
+        /// <param name="dateRetour"></param>
+        /// <param name="destinationID"></param>
+        /// <returns></returns>
+        [Route("api/Voyages/search")]
         public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
         {
             var query = db.Voyages.Where(x => x.PlacesDisponibles > 0);
@@ -39,6 +50,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return query;
         }
         // GET: api/Voyages/5
+        /// <summary>
+        /// Retourne la liste des voyages selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
         {
@@ -51,8 +67,14 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return Ok(voyage);
         }
 
-        
+
         // PUT: api/Voyages/5
+        /// <summary>
+        /// Modifie les attributs d'un voyage (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="voyage"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
         {
@@ -88,6 +110,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/Voyages
+        /// <summary>
+        /// Ajoute un nouveau voyage
+        /// </summary>
+        /// <param name="voyage"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult PostVoyage(Voyage voyage)
         {
@@ -103,6 +130,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/Voyages/5
+        /// <summary>
+        /// Supprime un voyage (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult DeleteVoyage(int id)
         {

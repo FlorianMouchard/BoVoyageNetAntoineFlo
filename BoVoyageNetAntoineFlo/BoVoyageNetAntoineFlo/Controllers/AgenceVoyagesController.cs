@@ -18,12 +18,21 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/AgenceVoyages
+        /// <summary>
+        /// Retourne la liste des agences de voyages
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<AgenceVoyage> GetAgencesVoyages()
         {
             return db.AgencesVoyages;
         }
 
         // GET: api/AgenceVoyages/5
+        /// <summary>
+        /// Retourne la liste des agences de voyages selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult GetAgenceVoyage(int id)
         {
@@ -37,6 +46,12 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/AgenceVoyages/5
+        /// <summary>
+        /// Modifie les attributs d'une agence de voyages (sélectionnée par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="agenceVoyage"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAgenceVoyage(int id, AgenceVoyage agenceVoyage)
         {
@@ -72,6 +87,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/AgenceVoyages
+        /// <summary>
+        /// Ajoute une nouvelle agence de voyages
+        /// </summary>
+        /// <param name="agenceVoyage"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult PostAgenceVoyage(AgenceVoyage agenceVoyage)
         {
@@ -87,6 +107,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/AgenceVoyages/5
+        /// <summary>
+        /// Supprime une agence de voyages (sélectionnée par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult DeleteAgenceVoyage(int id)
         {

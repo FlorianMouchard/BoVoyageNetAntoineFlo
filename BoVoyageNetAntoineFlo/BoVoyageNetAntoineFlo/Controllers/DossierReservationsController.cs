@@ -18,12 +18,41 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/DossierReservations
+        /// <summary>
+        /// Retourne la liste des dossiers de réservation
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<DossierReservation> GetDossiersReservations()
         {
             return db.DossiersReservations;
         }
 
+        // GET: api/DossierReservations/search
+        /// <summary>
+        /// Retourne la liste des dossiers de réservation selon un ou plusieurs critères spécifiés
+        /// </summary>
+        /// <param name="numeroCarte"></param>>
+        /// <param name="dossierID"></param>
+        /// <returns></returns>
+        [Route("api/DossierReservations/search")]
+        public IQueryable<DossierReservation> GetSearch(string numeroCarte = "", int? dossierID = null)
+        {
+            var query = db.DossiersReservations.Where(x => x.ID > 0);
+
+            if (dossierID != null)
+                query = query.Where(x => x.ID == dossierID);
+            if (!string.IsNullOrWhiteSpace(numeroCarte))
+                query = query.Where(x => x.NumeroCarteBancaire.Contains(numeroCarte));
+
+            return query;
+        }
+
         // GET: api/DossierReservations/5
+        /// <summary>
+        /// Retourne la liste des dossiers de réservation selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult GetDossierReservation(int id)
         {
@@ -37,6 +66,12 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/DossierReservations/5
+        /// <summary>
+        /// Modifie les attributs d'un dossier de réservation (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dossierReservation"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDossierReservation(int id, DossierReservation dossierReservation)
         {
@@ -72,6 +107,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/DossierReservations
+        /// <summary>
+        /// Ajoute un nouveau dossier de réservation
+        /// </summary>
+        /// <param name="dossierReservation"></param>
+        /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult PostDossierReservation(DossierReservation dossierReservation)
         {
@@ -87,6 +127,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/DossierReservations/5
+        /// <summary>
+        /// Supprime un dossier de réservation (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult DeleteDossierReservation(int id)
         {

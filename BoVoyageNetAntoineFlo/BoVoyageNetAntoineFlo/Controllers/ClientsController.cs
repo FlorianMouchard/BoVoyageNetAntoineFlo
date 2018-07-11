@@ -18,13 +18,27 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/Clients
+        /// <summary>
+        /// Retourne la liste des clients
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Client> GetClients()
         {
             return db.Clients;
         }
 
         // GET: api/Clients/search
-        [Route("api/clients/search")]
+        /// <summary>
+        /// Retourne la liste des clients selon un ou plusieurs critères spécifiés
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="telephone"></param>
+        /// <param name="adresse"></param>
+        /// <param name="clientID"></param>
+        /// <returns></returns>
+        [Route("api/Clients/search")]
         public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
         {
             var query = db.Clients.Where(x => x.ID > 0);
@@ -46,6 +60,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // GET: api/Clients/5
+        /// <summary>
+        /// Retourne la liste des clients selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {
@@ -59,6 +78,12 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/Clients/5
+        /// <summary>
+        /// Modifie les attributs d'un client (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)
         {
@@ -94,6 +119,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/Clients
+        /// <summary>
+        /// Ajoute un nouveau client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Client))]
         public IHttpActionResult PostClient(Client client)
         {
@@ -109,6 +139,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/Clients/5
+        /// <summary>
+        /// Supprime un client (sélectionné par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {
