@@ -21,6 +21,7 @@ namespace BoVoyageNetAntoineFlo.Models
         public int PlacesDisponibles { get; set; }
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [RegularExpression("\\d+", ErrorMessage = "N'entrez que des chiffres")]
         public decimal TarifToutCompris { get; set; }
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]

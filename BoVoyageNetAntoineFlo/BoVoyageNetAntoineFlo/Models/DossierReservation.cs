@@ -13,6 +13,7 @@ namespace BoVoyageNetAntoineFlo.Models
 
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [RegularExpression("^\\d{16}$", ErrorMessage = "Entrer un numéro au format xxxxyyyyxxxxyyyy")]
         public string NumeroCarteBancaire { get; set; }
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]

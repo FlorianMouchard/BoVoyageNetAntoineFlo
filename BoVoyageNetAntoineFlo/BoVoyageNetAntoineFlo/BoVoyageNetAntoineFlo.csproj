@@ -134,6 +134,10 @@
     <Compile Include="Migrations\201807100840065_Init.Designer.cs">
       <DependentUpon>201807100840065_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807110928485_Regex.cs" />
+    <Compile Include="Migrations\201807110928485_Regex.Designer.cs">
+      <DependentUpon>201807110928485_Regex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AgenceVoyage.cs" />
     <Compile Include="Models\Assurance.cs" />
@@ -163,6 +167,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807100840065_Init.resx">
       <DependentUpon>201807100840065_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110928485_Regex.resx">
+      <DependentUpon>201807110928485_Regex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
