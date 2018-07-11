@@ -24,23 +24,26 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // GET: api/Clients/search
-        /*[Route("search")]
-        public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", int? telephone = null, int? clientID = null)
+        [Route("api/clients/search")]
+        public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
         {
-            var query = db.Clients.Where(x => x.PlacesDisponibles < 0);
+            var query = db.Clients.Where(x => x.ID > 0);
 
             if (clientID != null)
                 query = query.Where(x => x.ID == clientID);
-            if (email != null)
-                query = query.Where(x => x.Email == email);
-            if (nom != null)
-                query = query.Where(x => x.Nom == nom);
-            if (prenom != null)
-                query = query.Where(x => x.Prenom == prenom);
-            if (telephone != null)
-                query = query.Where(x => x.Telephone == telephone);
+            if (!string.IsNullOrWhiteSpace(email))
+                query = query.Where(x => x.Email.Contains(email));
+            if (!string.IsNullOrWhiteSpace(nom))
+                query = query.Where(x => x.Nom.Contains(nom));
+            if (!string.IsNullOrWhiteSpace(prenom))
+                query = query.Where(x => x.Prenom.Contains(prenom));
+            if (!string.IsNullOrWhiteSpace(telephone))
+                query = query.Where(x => x.Telephone.Contains(telephone));
+            if (!string.IsNullOrWhiteSpace(adresse))
+                query = query.Where(x => x.Adresse.Contains(adresse));
 
-            return query;*/
+            return query;
+        }
 
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
