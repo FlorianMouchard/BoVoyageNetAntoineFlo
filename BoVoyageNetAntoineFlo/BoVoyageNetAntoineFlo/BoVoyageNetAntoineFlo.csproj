@@ -116,11 +116,11 @@
     <Content Include="Intranet\GestionVoyages\Voyages\ModifierVoyage.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\RechercherVoyage.html" />
     <Content Include="Intranet\GestionVoyages\Voyages\SupprimerVoyage.html" />
-    <Content Include="Intranet\Participant\AfficherParticipant.html" />
-    <Content Include="Intranet\Participant\AjouterParticipant.html" />
-    <Content Include="Intranet\Participant\MenuParticipants.html" />
-    <Content Include="Intranet\Participant\ModifierParticipant.html" />
-    <Content Include="Intranet\Participant\SupprimerParticipant.html" />
+    <Content Include="Intranet\GestionClients\Participants\AfficherParticipant.html" />
+    <Content Include="Intranet\GestionClients\Participants\AjouterParticipant.html" />
+    <Content Include="Intranet\GestionClients\Participants\MenuParticipants.html" />
+    <Content Include="Intranet\GestionClients\Participants\ModifierParticipant.html" />
+    <Content Include="Intranet\GestionClients\Participants\SupprimerParticipant.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
