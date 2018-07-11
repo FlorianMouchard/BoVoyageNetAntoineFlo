@@ -24,7 +24,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         //GET: api/Voyages/search
-        [Route("search")]
+        [Route("api/voyages/search")]
         public IQueryable<Voyage> GetSearch(DateTime? dateAller = null, DateTime? dateRetour = null, int? destinationID = null)
         {
             var query = db.Voyages.Where(x => x.PlacesDisponibles > 0);

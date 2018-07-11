@@ -23,6 +23,28 @@ namespace BoVoyageNetAntoineFlo.Controllers
             return db.Clients;
         }
 
+        // GET: api/Clients/search
+        [Route("api/clients/search")]
+        public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
+        {
+            var query = db.Clients.Where(x => x.ID > 0);
+
+            if (clientID != null)
+                query = query.Where(x => x.ID == clientID);
+            if (!string.IsNullOrWhiteSpace(email))
+                query = query.Where(x => x.Email.Contains(email));
+            if (!string.IsNullOrWhiteSpace(nom))
+                query = query.Where(x => x.Nom.Contains(nom));
+            if (!string.IsNullOrWhiteSpace(prenom))
+                query = query.Where(x => x.Prenom.Contains(prenom));
+            if (!string.IsNullOrWhiteSpace(telephone))
+                query = query.Where(x => x.Telephone.Contains(telephone));
+            if (!string.IsNullOrWhiteSpace(adresse))
+                query = query.Where(x => x.Adresse.Contains(adresse));
+
+            return query;
+        }
+
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
