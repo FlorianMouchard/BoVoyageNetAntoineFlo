@@ -13,7 +13,6 @@ namespace BoVoyageNetAntoineFlo.Models
 
         
         [Required(ErrorMessage = "La civilité est obligatoire")]
-        // Menu déroulant (M / Madame)
         public string Civilite { get; set; }
 
         [Required(ErrorMessage = "Le nom est obligatoire")]
@@ -26,7 +25,7 @@ namespace BoVoyageNetAntoineFlo.Models
         public string Adresse { get; set; }
 
         [Required(ErrorMessage = "Le téléphone est obligatoire")]
-        [RegularExpression("/^0[0-9]{9}$/", ErrorMessage = "Entrer un numéro au format 0xxxxxxxxx")]        
+        [RegularExpression("(0|\\+33|0033)[1-9][0-9]{8}", ErrorMessage = "Entrer un numéro au format 0xxxxxxxxx")]        
         public string Telephone { get; set; }
 
         [Required(ErrorMessage = "La date de naissance est obligatoire")]        
