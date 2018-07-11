@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Afficher les clients</h2>
+                <ul id="clients" />
                 <form class="form-horizontal" role="form"></form>
-            </div>
-            <div class="col-md-6">
-                <ul id="resultat"></ul>
+
+
             </div>
         </div>
-        </div>
+    </div>
 
     <p><a href="MenuClients.html">Retour à la gestion des clients</a></p>
     <p><a href="../Accueil.html">Retour à l'accueil</a></p>
@@ -26,24 +26,21 @@
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
+
         $(document).ready(function () {
-           
-                $.ajax({
-                    url: "http://localhost:52377/api/clients",
-                    method: 'GET',
-                    success: function (data) {
-                        let ul = $('#resultat');
-                        for (let item of data) {
-                            ul.append(`<li>${Client}</li>`);
-                        }
-                    },
-                    error: function (message) {
-                        alert(message);
-                    }
+            // Send an AJAX request
+            $.get('http://localhost:52377/api/clients', function (data) {
+                // On success, 'data' contains a list of clients.
+                $.each(data, function (key, item) {
+                    // Add a list item for the client.
+                    $('<li>', { text: formatItem(item) }).appendTo($('#clients'));
                 });
-                ev.preventDefault();
             });
-        
+        });
+        function formatItem(item) {
+            return item.Nom + ' ' + item.Prenom + ' ' + item.Adresse + ' ' + item.Age + ' ' + item.Telephone + ' ' + item.Email + ' ' + item.Civilite;
+        }
+
     </script>
 </body>
 </html>
