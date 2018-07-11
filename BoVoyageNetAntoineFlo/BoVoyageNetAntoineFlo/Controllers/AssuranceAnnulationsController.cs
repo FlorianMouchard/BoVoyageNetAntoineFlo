@@ -18,12 +18,21 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/AssuranceAnnulations
+        /// <summary>
+        /// Retourne la liste des assurances Annulation
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<AssuranceAnnulation> GetAssurancesAnnulations()
         {
             return db.AssurancesAnnulations;
         }
 
         // GET: api/AssuranceAnnulations/5
+        /// <summary>
+        /// Retourne la liste des assurances Annulation selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult GetAssuranceAnnulation(int id)
         {
@@ -37,6 +46,12 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/AssuranceAnnulations/5
+        /// <summary>
+        /// Modifie les attributs d'une assurance Annulation (sélectionnée par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="assuranceAnnulation"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAssuranceAnnulation(int id, AssuranceAnnulation assuranceAnnulation)
         {
@@ -72,6 +87,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/AssuranceAnnulations
+        /// <summary>
+        /// Ajoute une nouvelle assurance Annulation
+        /// </summary>
+        /// <param name="assuranceAnnulation"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult PostAssuranceAnnulation(AssuranceAnnulation assuranceAnnulation)
         {
@@ -87,6 +107,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/AssuranceAnnulations/5
+        /// <summary>
+        /// Supprime une assurance Annulation (sélectionnée par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(AssuranceAnnulation))]
         public IHttpActionResult DeleteAssuranceAnnulation(int id)
         {

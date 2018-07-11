@@ -18,12 +18,47 @@ namespace BoVoyageNetAntoineFlo.Controllers
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/Destinations
+        /// <summary>
+        /// Retourne la liste des destinations
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Destination> GetDestinations()
         {
             return db.Destinations;
         }
 
+        // GET: api/Destinations/search
+        /// <summary>
+        /// Retourne la liste des destinations selon un ou plusieurs critères spécifiés
+        /// </summary>
+        /// <param name="continent"></param>>
+        /// <param name="pays"></param>
+        /// <param name="region"></param>
+        /// <param name="destinationID"></param>
+        /// <returns></returns>
+        [Route("api/Destinations/search")]
+        public IQueryable<Destination> GetSearch(string continent = "", string pays = "", string region = "", int? destinationID = null)
+        {
+            var query = db.Destinations.Where(x => x.ID > 0);
+
+            if (destinationID != null)
+                query = query.Where(x => x.ID == destinationID);
+            if (!string.IsNullOrWhiteSpace(continent))
+                query = query.Where(x => x.Continent.Contains(continent));
+            if (!string.IsNullOrWhiteSpace(pays))
+                query = query.Where(x => x.Pays.Contains(pays));
+            if (!string.IsNullOrWhiteSpace(region))
+                query = query.Where(x => x.Region.Contains(region));
+
+            return query;
+        }
+
         // GET: api/Destinations/5
+        /// <summary>
+        /// Retourne la liste des destinations selon leur ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Destination))]
         public IHttpActionResult GetDestination(int id)
         {
@@ -37,6 +72,12 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/Destinations/5
+        /// <summary>
+        /// Modifie les attributs d'une destination (sélectionnée par son ID)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDestination(int id, Destination destination)
         {
@@ -72,6 +113,11 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // POST: api/Destinations
+        /// <summary>
+        /// Ajoute une nouvelle destination
+        /// </summary>
+        /// <param name="destination"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Destination))]
         public IHttpActionResult PostDestination(Destination destination)
         {
