@@ -1,1 +1,2 @@
 # BoVoyageNetAntoineFlo
+Voici notre projet Web BoVoyage (réalisé par Florian et Antoine). Nous avons voulu réaliser la partie Intranet de l'application destinée aux commerciaux, pour qu'ils puissent gérer les dossiers des voyages et des clients. Notre but était de nous concentrer au maximum sur la partie fonctionnelle de l'application, plutôt que sur l'aspect visuel. Donc ne soyez pas choqués par notre mise en page, elle n'est pas franchement belle ^^
