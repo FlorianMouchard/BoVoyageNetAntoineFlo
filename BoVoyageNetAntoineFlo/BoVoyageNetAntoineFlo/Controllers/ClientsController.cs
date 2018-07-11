@@ -13,8 +13,10 @@ using BoVoyageNetAntoineFlo.Models;
 
 namespace BoVoyageNetAntoineFlo.Controllers
 {
+    [RoutePrefix("api/clients")]
     public class ClientsController : ApiController
     {
+        
         private BoVoyageDbContext db = new BoVoyageDbContext();
 
         // GET: api/Clients
@@ -24,7 +26,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // GET: api/Clients/search
-        [Route("api/clients/search")]
+        [Route("search")]
         public IQueryable<Client> GetSearch(string email = "", string nom = "", string prenom = "", string telephone = "", string adresse ="", int? clientID = null)
         {
             var query = db.Clients.Where(x => x.ID > 0);
@@ -46,6 +48,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // GET: api/Clients/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {
@@ -59,6 +62,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // PUT: api/Clients/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)
         {
@@ -109,6 +113,7 @@ namespace BoVoyageNetAntoineFlo.Controllers
         }
 
         // DELETE: api/Clients/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {

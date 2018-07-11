@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Afficher les clients</title>
+    <title>Afficher les participants</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
@@ -20,10 +20,10 @@
                             <th>Adresse</th>
                             <th>Numero de Telephone</th>
                             <th>Date de Naissance</th>
-                            <th>Email</th>
+                            <th>Reduction</th>
                         </tr>
                     </thead>
-                    <tbody id="tableClient"></tbody>
+                    <tbody id="tableParticipant"></tbody>
 
                 </table>
             </div>
@@ -41,11 +41,11 @@
 
         $(document).ready(function () {
             $.ajax({
-                url: 'http://localhost:52377/api/clients',
+                url: 'http://localhost:52377/api/participants',
                 method: 'GET',
                 success: function (data) {
                     for (let item of data) {
-                        $("#tableClient").append(`<tr><td>${item.ID}</td><td>${item.Civilite}</td><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Age}</td><td>${item.Adresse}</td><td>${item.Telephone}</td><td>${item.DateNaissance}</td><td>${item.Email}</td></tr>`);
+                        $("#tableParticipant").append(`<tr><td>${item.ID}</td><td>${item.Civilite}</td><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Age}</td><td>${item.Adresse}</td><td>${item.Telephone}</td><td>${item.DateNaissance}</td><td>${item.Reduction}</td></tr>`);
 
                     }
                 },
